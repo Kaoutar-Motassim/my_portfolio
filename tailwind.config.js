@@ -18,15 +18,6 @@ module.exports = {
         'lg': '1024px',
         'xl': '1280px',
         '2xl': '1536px',
-        // Z Fold 5 specific breakpoints
-        'fold-closed': '344px',    // Z Fold 5 closed (cover screen)
-        'fold-open': '673px',      // Z Fold 5 open (inner screen width)
-        'fold-height': '884px',    // Z Fold 5 inner screen height
-        // Custom breakpoints for foldable devices
-        'foldable-sm': {'raw': '(min-width: 344px) and (max-width: 672px)'},
-        'foldable-lg': {'raw': '(min-width: 673px) and (max-width: 884px)'},
-        'foldable-portrait': {'raw': '(orientation: portrait) and (min-width: 344px) and (max-width: 673px)'},
-        'foldable-landscape': {'raw': '(orientation: landscape) and (min-width: 673px)'},
       },
       colors: {
         // AI/Coding Theme Colors

@@ -92,7 +92,7 @@ export default function Navigation() {
                       : 'text-gray-300 hover:text-primary hover:bg-primary/10'
                   }`}
                 >
-                  <span className="fold-open:hidden">{item.icon}</span>
+                  <span className="fold-open:hidden">{item.label}</span>
                   <span className="hidden fold-open:inline">{item.label}</span>
                 </motion.button>
               ))}
@@ -155,7 +155,7 @@ export default function Navigation() {
                       : 'text-gray-300 hover:text-primary hover:bg-primary/10'
                   }`}
                 >
-                  <span className="mr-2 fold-closed:mr-1">{item.icon}</span>
+                  <span className="mr-2 fold-closed:mr-1">{item.id}</span>
                   <span className="fold-closed:hidden">{item.label}</span>
                   <span className="hidden fold-closed:inline">{shortLabels[item.id]}</span>
                 </motion.button>
