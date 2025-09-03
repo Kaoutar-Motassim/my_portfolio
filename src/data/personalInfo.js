@@ -19,12 +19,12 @@ export const personalInfo = {
 export const socialLinks = [
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/aymen-chabbaki",
+    url: "https://www.linkedin.com/in/ayman-chabbaki-b4093829b/",
     icon: "FaLinkedin"
   },
   {
     name: "GitHub", 
-    url: "https://github.com/aymenchabbaki",
+    url: "https://github.com/AymanChabbaki",
     icon: "FaGithub"
   },
   {

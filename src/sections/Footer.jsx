@@ -129,7 +129,6 @@ export default function Footer() {
             >
               <FaHeart className="text-red-500" />
             </motion.span>
-            <span>using React & Tailwind CSS</span>
           </p>
         </motion.div>
       </div>

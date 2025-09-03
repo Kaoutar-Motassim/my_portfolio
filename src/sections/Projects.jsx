@@ -90,16 +90,7 @@ export default function Projects() {
                 
                 {/* Project Links Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center space-x-3 sm:space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-2 sm:p-3 bg-primary/20 backdrop-blur-sm rounded-lg text-primary border border-primary/30 hover:bg-primary/30 transition-colors"
-                  >
                     <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
-                  </motion.a>
                   <motion.a
                     href={project.githubUrl}
                     target="_blank"

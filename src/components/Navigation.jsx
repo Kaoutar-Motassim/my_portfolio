@@ -137,7 +137,7 @@ export default function Navigation() {
               whileTap={{ scale: 0.95 }}
               className="text-sm fold-closed:text-xs font-bold font-mono text-primary"
             >
-              <span className="text-matrix-green">$</span> <span className="fold-closed:hidden">aymen</span><span className="hidden fold-closed:inline">a</span>
+              <span className="text-matrix-green">$</span> <span className="fold-closed:hidden">aymen.dev</span><span className="hidden fold-closed:inline">a</span>
             </motion.button>
 
             {/* Mobile Menu Button */}

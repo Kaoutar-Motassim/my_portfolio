@@ -8,23 +8,11 @@ export const projects = [
     category: "Full Stack",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/gestion_pilotage",
     year: "2025"
   },
   {
     id: 2,
-    title: "Gestion des Membres",
-    description: "Système de gestion des membres pour clubs et associations développé avec Django, React et PostgreSQL.",
-    image: "/projects/gestion-membres.jpg",
-    tags: ["Django", "React", "PostgreSQL"],
-    category: "Full Stack",
-    featured: true,
-    liveUrl: "#",
-    githubUrl: "#",
-    year: "2025"
-  },
-  {
-    id: 3,
     title: "Football Prediction",
     description: "Application de prédiction des scores de football avec IA utilisant Python, Flask et React pour des prédictions précises.",
     image: "/projects/football-prediction.jpg",
@@ -32,11 +20,11 @@ export const projects = [
     category: "AI",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/PredictionFootBalll",
     year: "2025"
   },
   {
-    id: 4,
+    id: 3,
     title: "Car Price Prediction",
     description: "Estimation du prix des véhicules avec machine learning développé en Python, Flask et React pour des prédictions précises.",
     image: "/projects/car-price.jpg",
@@ -44,11 +32,11 @@ export const projects = [
     category: "AI",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/PFM",
     year: "2025"
   },
   {
-    id: 5,
+    id: 4,
     title: "Gestion de Recrutement",
     description: "Plateforme complète de gestion des processus de recrutement développée avec Laravel, React et MySQL.",
     image: "/projects/recruitment.jpg",
@@ -56,11 +44,11 @@ export const projects = [
     category: "Full Stack",
     featured: false,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/Gestion_Recrutement",
     year: "2024"
   },
   {
-    id: 6,
+    id: 5,
     title: "AI Détection Panneaux",
     description: "Système intelligent de détection des panneaux de signalisation utilisant l'intelligence artificielle et la vision par ordinateur.",
     image: "/projects/traffic-signs.jpg",
@@ -68,11 +56,11 @@ export const projects = [
     category: "AI",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/ai_detection_panneaux",
     year: "2025"
   },
   {
-    id: 7,
+    id: 6,
     title: "Career Manager Agent",
     description: "Agent intelligent de gestion de carrière utilisant l'IA pour fournir des conseils personnalisés et guider les professionnels.",
     image: "/projects/career-agent.jpg",
@@ -80,11 +68,11 @@ export const projects = [
     category: "AI",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/My_Career_Coach_agent",
     year: "2025"
   },
   {
-    id: 8,
+    id: 7,
     title: "SkillBridge Platform",
     description: "Plateforme de freelancing similaire à Fiverr permettant aux freelancers de proposer leurs services et aux clients de trouver des talents.",
     image: "/projects/skillbridge.jpg",
@@ -92,11 +80,11 @@ export const projects = [
     category: "Full Stack",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/SkillBridge-Pro",
     year: "2024"
   },
   {
-    id: 9,
+    id: 8,
     title: "IQAMATI Platform",
     description: "Plateforme complète de gestion immobilière pour syndics développée avec ReactJS et ExpressJS avec authentification avancée.",
     image: "/projects/iqamati.jpg",
@@ -104,11 +92,11 @@ export const projects = [
     category: "Full Stack",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/i9amati",
     year: "2025"
   },
   {
-    id: 10,
+    id: 9,
     title: "Chat Atlas App",
     description: "Application de messagerie en temps réel développée avec Flutter, permettant une communication fluide via l'intégration Firebase.",
     image: "/projects/chat-atlas.jpg",
@@ -116,11 +104,11 @@ export const projects = [
     category: "Mobile",
     featured: false,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/atlaschat",
     year: "2024"
   },
   {
-    id: 11,
+    id: 10,
     title: "IPTV Spanish Website",
     description: "Site web IPTV espagnol offrant une expérience de streaming fluide avec une interface utilisateur moderne et responsive.",
     image: "/projects/iptv-spanish.jpg",
@@ -128,7 +116,19 @@ export const projects = [
     category: "Web",
     featured: false,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/maxtv-frond",
+    year: "2024"
+  },
+  {
+    id: 11,
+    title: "Team Most Like Series",
+    description: "React app like Netflix for series, providing a streaming-like experience for TV shows.",
+    image: "/projects/team-most-like-series.jpg",
+    tags: ["React", "Netflix-like", "Series", "Streaming"],
+    category: "Web",
+    featured: true,
+    liveUrl: "#",
+    githubUrl: "https://github.com/AymanChabbaki/team-most-likes-series",
     year: "2024"
   }
 ];
