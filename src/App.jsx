@@ -1,39 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import AnimatedBackground from './components/AnimatedBackground';
-import ThemeToggle from './components/ThemeToggle';
 import Navigation from './components/Navigation';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Timeline from './sections/Timeline';
 import Achievements from './sections/Achievements';
+import Resume from './sections/Resume';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true); // Default to dark mode for coding theme
-
+  // Set dark mode permanently
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
   }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -43,108 +27,209 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 font-mono ${
-      darkMode 
-        ? 'bg-dark-bg text-white' 
-        : 'bg-gray-50 text-gray-900'
-    }`}>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen transition-colors duration-300 font-mono bg-dark-bg text-white overflow-x-hidden"
+    >
       <Navigation />
-      <ThemeToggle darkMode={darkMode} toggleTheme={toggleTheme} />
       
       {/* Hero Section */}
-      <section id="hero" className="w-full h-screen flex items-center justify-center relative overflow-hidden">
+      <section id="hero" className="w-full min-h-screen flex items-center justify-center relative overflow-hidden px-2 sm:px-4 pb-12 sm:pb-16 md:pb-20">
         <AnimatedBackground />
         
         {/* Matrix-style background overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-surface to-dark-card opacity-95"></div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.95 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-surface to-dark-card"
+        ></motion.div>
         
-        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-4 lg:px-8">
+        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-2 sm:px-4 lg:px-8 sm:pt-24 md:pt-12 lg:pt-12">
           {/* Terminal-style header */}
-          <div className="mb-12 p-8 bg-dark-surface border border-dark-border rounded-lg shadow-neural max-w-5xl w-full">
-            <div className="flex items-center mb-6">
-              <div className="flex space-x-3">
-                <div className="w-4 h-4 bg-error rounded-full"></div>
-                <div className="w-4 h-4 bg-warning rounded-full"></div>
-                <div className="w-4 h-4 bg-matrix-green rounded-full"></div>
+          <motion.div 
+            initial={{ opacity: 0, y: -50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6 sm:mb-8 md:mb-12 lg:mb-8 xl:mb-12 p-3 sm:p-6 md:p-8 bg-dark-surface border border-dark-border rounded-lg shadow-neural max-w-5xl w-full"
+          >
+            <div className="flex items-center mb-3 sm:mb-4 md:mb-6">
+              <div className="flex space-x-2 sm:space-x-3">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  className="w-3 h-3 sm:w-4 sm:h-4 bg-error rounded-full"
+                ></motion.div>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                  className="w-3 h-3 sm:w-4 sm:h-4 bg-warning rounded-full"
+                ></motion.div>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
+                  className="w-3 h-3 sm:w-4 sm:h-4 bg-matrix-green rounded-full"
+                ></motion.div>
               </div>
               <div className="flex-1 text-center">
-                <span className="text-matrix-green text-lg font-bold">aymen@portfolio:~$</span>
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="text-matrix-green text-sm sm:text-base md:text-lg font-bold"
+                >
+                  aymen@portfolio:~$
+                </motion.span>
               </div>
             </div>
             
-            <div className="text-left font-mono text-lg space-y-3">
-              <div className="text-matrix-green">
+            <div className="text-left font-mono text-xs sm:text-sm md:text-base lg:text-lg space-y-1 sm:space-y-2 md:space-y-3">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1 }}
+                className="text-matrix-green"
+              >
                 <span className="text-primary">const</span> developer = <span className="text-accent">{`{`}</span>
-              </div>
-              <div className="text-matrix-green ml-6">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.1 }}
+                className="text-matrix-green ml-3 sm:ml-4 md:ml-6"
+              >
                 name: <span className="text-secondary">"Aymen Chabbaki"</span>,
-              </div>
-              <div className="text-matrix-green ml-6">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+                className="text-matrix-green ml-3 sm:ml-4 md:ml-6"
+              >
                 role: <span className="text-secondary">"Full Stack Developer & AI Engineer"</span>,
-              </div>
-              <div className="text-matrix-green ml-6">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.3 }}
+                className="text-matrix-green ml-3 sm:ml-4 md:ml-6"
+              >
                 skills: <span className="text-accent">[</span><span className="text-secondary">"React", "Node.js", "Python", "AI/ML"</span><span className="text-accent">]</span>,
-              </div>
-              <div className="text-matrix-green ml-6">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
+                className="text-matrix-green ml-3 sm:ml-4 md:ml-6"
+              >
                 passion: <span className="text-secondary">"Building the future with code"</span>
-              </div>
-              <div className="text-matrix-green">
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                className="text-matrix-green"
+              >
                 <span className="text-accent">{`};`}</span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
           
           {/* Main title with glitch effect */}
-          <h1 className="text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary animate-pulse-neon">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.6 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary animate-pulse-neon"
+          >
             Aymen Chabbaki
-          </h1>
+          </motion.h1>
           
           {/* Typewriter effect subtitle */}
-          <div className="text-2xl font-semibold mb-6 text-matrix-green">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6 text-matrix-green"
+          >
             <span className="border-r-2 border-primary animate-blink">
-              Full Stack Developer & AI Engineer
+              <span className="hidden sm:inline">Full Stack Developer & AI Engineer</span>
+              <span className="sm:hidden">Full Stack Dev & AI</span>
             </span>
-          </div>
+          </motion.div>
           
-          <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2 }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed px-2"
+          >
             <span className="text-primary">//</span> Crafting intelligent solutions with cutting-edge technology
-          </p>
+          </motion.p>
           
           {/* Neon buttons */}
-          <div className="flex gap-6 justify-center flex-wrap">
-            <button 
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.2 }}
+            className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center w-full max-w-md sm:max-w-none"
+          >
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contact')}
-              className="group relative px-8 py-4 bg-gradient-to-r from-primary to-accent text-dark-bg font-bold text-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-neon-primary transform hover:scale-105"
+              className="group relative px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-accent text-dark-bg font-bold text-sm sm:text-base md:text-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-neon-primary transform w-full sm:w-auto"
             >
               <span className="relative z-10">$ ./hire_me</span>
               <div className="absolute inset-0 bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+            </motion.button>
             
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('projects')}
-              className="group px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-dark-bg font-bold text-lg rounded-lg transition-all duration-300 hover:shadow-neon-primary transform hover:scale-105"
+              className="group px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-2 border-primary text-primary hover:bg-primary hover:text-dark-bg font-bold text-sm sm:text-base md:text-lg rounded-lg transition-all duration-300 hover:shadow-neon-primary transform w-full sm:w-auto"
             >
               <span className="group-hover:hidden">ls ./projects</span>
               <span className="hidden group-hover:inline">cd ./projects</span>
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
           
           {/* Terminal cursor */}
-          <div className="mt-8 fold-closed:mt-2 md:mt-12 lg:mt-16 text-matrix-green animate-blink">
-            <span className="text-2xl fold-closed:text-lg md:text-3xl lg:text-4xl">▊</span>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 2.5 }}
+            className="mt-4 sm:mt-8 md:mt-12 lg:mt-16 text-matrix-green animate-blink"
+          >
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">▊</span>
+          </motion.div>
         </div>
       </section>
       
-      {/* Sections */}
-      <About />
-      <Skills />
-      <Projects />
-      <Timeline />
-      <Achievements />
-      <Contact />
-      <Footer />
-    </div>
+      {/* Sections with page transition animations */}
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <About />
+          <Skills />
+          <Projects />
+          <Timeline />
+          <Achievements />
+          <Resume />
+          <Contact />
+          <Footer />
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 }
 

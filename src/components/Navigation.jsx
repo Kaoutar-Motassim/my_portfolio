@@ -1,18 +1,21 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Home, User, Zap, Rocket, TrendingUp, Mail, FileText, Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
-  const [isVisible, setIsVisible] = useState(false);
+  const [isDesktopVisible, setIsDesktopVisible] = useState(false);
+  const [isMobileVisible, setIsMobileVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'hero', label: 'Home', icon: '🏠' },
-    { id: 'about', label: 'About', icon: '👨‍💻' },
-    { id: 'skills', label: 'Skills', icon: '⚡' },
-    { id: 'projects', label: 'Projects', icon: '🚀' },
-    { id: 'timeline', label: 'Experience', icon: '📈' },
-    { id: 'contact', label: 'Contact', icon: '📧' }
+    { id: 'hero', label: 'Home', icon: Home },
+    { id: 'about', label: 'About', icon: User },
+    { id: 'skills', label: 'Skills', icon: Zap },
+    { id: 'projects', label: 'Projects', icon: Rocket },
+    { id: 'timeline', label: 'Experience', icon: TrendingUp },
+    { id: 'resume', label: 'Resume', icon: FileText },
+    { id: 'contact', label: 'Contact', icon: Mail }
   ];
 
   // Short labels for Z Fold 5 cover screen
@@ -20,15 +23,20 @@ export default function Navigation() {
     'hero': 'Home',
     'about': 'About',
     'skills': 'Skills',
-    'projects': 'Work',
-    'timeline': 'Exp',
+    'projects': 'Projects',
+    'timeline': 'Experience',
+    'resume': 'Resume',
     'contact': 'Contact'
   };
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsVisible(scrollY > 100);
+      const isMobile = window.innerWidth < 640;
+      
+      // Mobile: always visible, Desktop: only after scroll
+      setIsMobileVisible(true);
+      setIsDesktopVisible(!isMobile && scrollY > 100);
 
       // Determine active section
       const sections = navItems.map(item => document.getElementById(item.id));
@@ -46,8 +54,19 @@ export default function Navigation() {
       setActiveSection(current);
     };
 
+    const handleResize = () => {
+      handleScroll(); // Re-evaluate visibility on resize
+    };
+
+    // Initial check
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [navItems]);
 
   const scrollToSection = (sectionId) => {
@@ -62,7 +81,7 @@ export default function Navigation() {
       {/* Desktop/Tablet Navigation */}
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: isVisible ? 0 : -100 }}
+        animate={{ y: isDesktopVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
         className="fixed top-0 left-0 right-0 z-40 glass bg-dark-surface/90 backdrop-blur-md border-b border-primary/20 hidden sm:block"
       >
@@ -86,13 +105,14 @@ export default function Navigation() {
                   onClick={() => scrollToSection(item.id)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-3 fold-open:px-4 py-2 rounded-lg font-mono text-sm fold-open:text-base transition-all duration-300 ${
+                  className={`px-3 fold-open:px-4 py-2 rounded-lg font-mono text-sm fold-open:text-base transition-all duration-300 flex items-center space-x-2 ${
                     activeSection === item.id
                       ? 'bg-primary text-dark-bg shadow-neon-primary'
                       : 'text-gray-300 hover:text-primary hover:bg-primary/10'
                   }`}
                 >
-                  <span className="fold-open:hidden">{item.label}</span>
+                  <item.icon className="w-4 h-4" />
+                  <span className="fold-open:hidden">{shortLabels[item.id] || item.label}</span>
                   <span className="hidden fold-open:inline">{item.label}</span>
                 </motion.button>
               ))}
@@ -104,7 +124,7 @@ export default function Navigation() {
       {/* Mobile Navigation (Z Fold 5 Cover Screen & Small Mobile) */}
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: isVisible ? 0 : -100 }}
+        animate={{ y: isMobileVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
         className="fixed top-0 left-0 right-0 z-40 glass bg-dark-surface/95 backdrop-blur-md border-b border-primary/20 sm:hidden"
       >
@@ -124,46 +144,105 @@ export default function Navigation() {
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
-              className="p-2 fold-closed:p-1 text-primary hover:text-accent transition-colors"
+              className="p-2 fold-closed:p-1 text-primary hover:text-accent transition-colors z-50 relative"
             >
-              <span className="text-lg fold-closed:text-base">☰</span>
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-lg fold-closed:text-base block"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </motion.div>
             </motion.button>
           </div>
-
-          {/* Mobile Menu Dropdown */}
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ 
-              height: isMobileMenuOpen ? 'auto' : 0,
-              opacity: isMobileMenuOpen ? 1 : 0
-            }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="pt-2 pb-1 space-y-1 fold-closed:space-y-0.5">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => {
-                    scrollToSection(item.id);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-full text-left px-3 fold-closed:px-2 py-2 fold-closed:py-1 rounded-lg font-mono text-sm fold-closed:text-xs transition-all duration-300 ${
-                    activeSection === item.id
-                      ? 'bg-primary text-dark-bg'
-                      : 'text-gray-300 hover:text-primary hover:bg-primary/10'
-                  }`}
-                >
-                  <span className="mr-2 fold-closed:mr-1">{item.id}</span>
-                  <span className="fold-closed:hidden">{item.label}</span>
-                  <span className="hidden fold-closed:inline">{shortLabels[item.id]}</span>
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </motion.nav>
+
+      {/* Slide-in Mobile Menu */}
+      <motion.div
+        initial={{ x: '-100%' }}
+        animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="fixed top-0 left-0 h-full w-64 sm:w-72 bg-dark-surface/98 backdrop-blur-md border-r border-primary/20 z-30 sm:hidden"
+      >
+        <div className="pt-16 p-4">
+          {/* Terminal Header */}
+          <div className="mb-6 p-4 bg-dark-card border border-primary/30 rounded-lg">
+            <div className="flex items-center mb-3">
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 bg-error rounded-full"></div>
+                <div className="w-3 h-3 bg-warning rounded-full"></div>
+                <div className="w-3 h-3 bg-matrix-green rounded-full"></div>
+              </div>
+              <div className="flex-1 text-center">
+                <span className="text-matrix-green text-sm font-mono font-bold">navigation.js</span>
+              </div>
+            </div>
+            <div className="text-matrix-green font-mono text-xs">
+              <span className="text-primary">const</span> menu = <span className="text-accent">[</span>
+            </div>
+          </div>
+
+          {/* Navigation Items */}
+          <div className="space-y-2">
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ 
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  x: isMobileMenuOpen ? 0 : -20
+                }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                onClick={() => {
+                  scrollToSection(item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                whileHover={{ x: 10, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`w-full text-left px-4 py-3 rounded-lg font-mono text-sm transition-all duration-300 flex items-center space-x-3 ${
+                  activeSection === item.id
+                    ? 'bg-gradient-to-r from-primary to-accent text-dark-bg shadow-neon-primary'
+                    : 'text-gray-300 hover:text-primary hover:bg-primary/10 hover:border-primary/30 border border-transparent'
+                }`}
+              >
+                <span className="text-lg"><item.icon className="w-5 h-5" /></span>
+                <span>{item.label}</span>
+                {activeSection === item.id && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="ml-auto text-dark-bg font-bold"
+                  >
+                    →
+                  </motion.span>
+                )}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Terminal Footer */}
+          <div className="mt-6 p-4 bg-dark-card border border-accent/30 rounded-lg">
+            <div className="text-matrix-green font-mono text-xs">
+              <span className="text-accent">];</span>
+            </div>
+            <div className="text-matrix-green font-mono text-xs mt-1">
+              <span className="text-primary">export default</span> menu;
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-20 sm:hidden"
+        />
+      )}
     </>
   );
 }

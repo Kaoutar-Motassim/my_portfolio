@@ -23,12 +23,12 @@ export default function AnimatedBackground() {
           repeat: Infinity,
           ease: "linear"
         }}
-        className="absolute top-1/4 left-1/4 w-48 h-48 fold-closed:w-32 fold-closed:h-32 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-gradient-to-r from-primary/20 to-neural-purple/20 rounded-full blur-xl animate-neural-pulse"
+        className="absolute top-1/4 left-1/3 w-48 h-48 fold-closed:w-32 fold-closed:h-32 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-gradient-to-r from-primary/20 to-neural-purple/20 rounded-full blur-xl animate-neural-pulse"
       />
       
       <motion.div
         animate={{
-          x: [0, -150, 0],
+          x: [0, -100, 0],
           y: [0, 100, 0],
           scale: [1, 0.8, 1],
           rotate: [360, 180, 0],
@@ -38,7 +38,7 @@ export default function AnimatedBackground() {
           repeat: Infinity,
           ease: "linear"
         }}
-        className="absolute top-3/4 right-1/4 w-64 h-64 fold-closed:w-40 fold-closed:h-40 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-accent/15 to-matrix-green/15 rounded-full blur-xl animate-neural-pulse"
+        className="absolute top-3/4 right-1/3 w-64 h-64 fold-closed:w-40 fold-closed:h-40 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-accent/15 to-matrix-green/15 rounded-full blur-xl animate-neural-pulse"
       />
       
       <motion.div
