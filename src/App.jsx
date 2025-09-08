@@ -38,7 +38,7 @@ function App() {
       
       {/* Hero Section */}
             {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-dark via-dark-lighter to-dark">
+      <section id="home" className="min-h-[80vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-dark via-dark-lighter to-dark pt-16 sm:pt-0">
         {/* Galaxy Background - Full Coverage */}
         {/* Orb Background - Full Coverage */}
         <div className="absolute inset-0 w-full h-full z-0" style={{ pointerEvents: 'auto' }}>
@@ -53,13 +53,13 @@ function App() {
         {/* Code Rain Effect */}
         <CodeRain />
         
-        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-8">
+        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-2 sm:py-8">
           {/* Terminal-style header */}
           <motion.div 
             initial={{ opacity: 0, y: -50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-4 sm:mb-6 p-4 sm:p-6 bg-dark-surface/80 backdrop-blur-sm border border-dark-border rounded-lg shadow-2xl max-w-4xl w-full"
+            className="mb-3 sm:mb-6 p-3 sm:p-6 bg-dark-surface/80 backdrop-blur-sm border border-dark-border rounded-lg shadow-2xl max-w-4xl w-full"
           >
             <div className="flex items-center mb-3 sm:mb-4">
               <div className="flex space-x-2">
@@ -151,7 +151,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
           >
             Aymen Chabbaki
           </motion.h1>
@@ -160,7 +160,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.7 }}
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 text-matrix-green"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-matrix-green"
           >
             <span className="border-r-2 border-primary animate-pulse">
               Full Stack Developer & AI Engineer
@@ -171,7 +171,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="text-sm sm:text-base md:text-lg mb-6 max-w-2xl mx-auto text-gray-300 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl mx-auto text-gray-300 leading-relaxed"
           >
             <span className="text-primary">//</span> Crafting intelligent solutions with cutting-edge technology
           </motion.p>

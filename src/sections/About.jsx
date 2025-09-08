@@ -3,7 +3,7 @@ import { personalInfo } from '../data/personalInfo';
 
 export default function About() {
   return (
-    <section id="about" className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 px-2 sm:px-4 md:px-6 max-w-6xl mx-auto">
+    <section id="about" className="pt-1 sm:pt-6 md:pt-8 lg:pt-12 pb-12 sm:pb-16 md:pb-20 px-2 sm:px-4 md:px-6 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
