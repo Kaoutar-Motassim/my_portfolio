@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
-import HeroBackground from './components/HeroBackground';
-import CustomCursor from './components/CustomCursor';
+import Galaxy from './components/Galaxy';
 import Navigation from './components/Navigation';
 import About from './sections/About';
 import Skills from './sections/Skills';
@@ -34,13 +33,31 @@ function App() {
       transition={{ duration: 0.5 }}
       className="min-h-screen transition-colors duration-300 font-mono bg-dark-bg text-white overflow-x-hidden"
     >
-      <CustomCursor />
       <Navigation />
       
       {/* Hero Section */}
-      <section id="hero" className="w-full h-screen flex items-center justify-center relative overflow-hidden">
-        <HeroBackground />
-        
+            {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-dark via-dark-lighter to-dark">
+        {/* Galaxy Background - Full Coverage */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <Galaxy
+            mouseRepulsion={true}
+            mouseInteraction={true}
+            density={1.2}
+            glowIntensity={0.4}
+            saturation={0.6}
+            hueShift={200}
+            transparent={true}
+            speed={0.8}
+            twinkleIntensity={0.4}
+            rotationSpeed={0.05}
+            repulsionStrength={1.5}
+            particleSize={1.5}
+
+            
+          />
+        </div>
+
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-8">
           {/* Terminal-style header */}
           <motion.div 
