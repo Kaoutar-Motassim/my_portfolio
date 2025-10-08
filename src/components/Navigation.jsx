@@ -18,7 +18,6 @@ export default function Navigation() {
     { id: 'contact', label: 'Contact', icon: Mail }
   ];
 
-  // Short labels for Z Fold 5 cover screen
   const shortLabels = {
     'hero': 'Home',
     'about': 'About',
@@ -33,34 +32,23 @@ export default function Navigation() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const isMobile = window.innerWidth < 640;
-      
-      // Mobile: always visible, Desktop: only after scroll
       setIsMobileVisible(true);
       setIsDesktopVisible(!isMobile && scrollY > 100);
 
-      // Determine active section
       const sections = navItems.map(item => document.getElementById(item.id));
       let current = 'hero';
-
-      sections.forEach((section) => {
+      sections.forEach(section => {
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            current = section.id;
-          }
+          if (rect.top <= 100 && rect.bottom >= 100) current = section.id;
         }
       });
-
       setActiveSection(current);
     };
 
-    const handleResize = () => {
-      handleScroll(); // Re-evaluate visibility on resize
-    };
-
-    // Initial check
+    const handleResize = () => handleScroll();
     handleScroll();
-    
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     return () => {
@@ -69,92 +57,82 @@ export default function Navigation() {
     };
   }, [navItems]);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
-      {/* Desktop/Tablet Navigation */}
+      {/* Desktop Navigation */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: isDesktopVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
         className="fixed top-0 left-0 right-0 z-40 glass bg-dark-surface/90 backdrop-blur-md border-b border-primary/20 hidden sm:block"
       >
-        <div className="max-w-6xl mx-auto px-4 fold-open:px-6 lg:px-6 py-3 fold-open:py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.button
-              onClick={() => scrollToSection('hero')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-xl fold-open:text-2xl font-bold font-mono text-primary hover:text-accent transition-colors"
-            >
-              <span className="text-matrix-green">$</span> aymen.dev
-            </motion.button>
+        <div className="max-w-6xl mx-auto px-4 fold-open:px-6 lg:px-6 py-3 fold-open:py-4 flex items-center justify-between">
+          <motion.button
+            onClick={() => scrollToSection('hero')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-xl fold-open:text-2xl font-bold font-mono text-primary hover:text-accent transition-colors"
+          >
+            <span className="text-matrix-green">$</span> kaoutar.dev
+          </motion.button>
 
-            {/* Navigation Links */}
-            <div className="flex items-center space-x-2 fold-open:space-x-4 lg:space-x-6">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-3 fold-open:px-4 py-2 rounded-lg font-mono text-sm fold-open:text-base transition-all duration-300 flex items-center space-x-2 ${
-                    activeSection === item.id
-                      ? 'bg-primary text-dark-bg shadow-neon-primary'
-                      : 'text-gray-300 hover:text-primary hover:bg-primary/10'
-                  }`}
-                >
-                  <item.icon className="w-4 h-4" />
-                  <span className="fold-open:hidden">{shortLabels[item.id] || item.label}</span>
-                  <span className="hidden fold-open:inline">{item.label}</span>
-                </motion.button>
-              ))}
-            </div>
+          <div className="flex items-center space-x-2 fold-open:space-x-4 lg:space-x-6">
+            {navItems.map(item => (
+              <motion.button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-3 fold-open:px-4 py-2 rounded-lg font-mono text-sm fold-open:text-base transition-all duration-300 flex items-center space-x-2 ${
+                  activeSection === item.id
+                    ? 'bg-primary text-dark-bg shadow-neon-primary'
+                    : 'text-gray-300 hover:text-primary hover:bg-primary/10'
+                }`}
+              >
+                <item.icon className="w-4 h-4" />
+                <span className="fold-open:hidden">{shortLabels[item.id] || item.label}</span>
+                <span className="hidden fold-open:inline">{item.label}</span>
+              </motion.button>
+            ))}
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation (Z Fold 5 Cover Screen & Small Mobile) */}
+      {/* Mobile Navigation */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: isMobileVisible ? 0 : -100 }}
         transition={{ duration: 0.3 }}
         className="fixed top-0 left-0 right-0 z-40 glass bg-dark-surface/95 backdrop-blur-md border-b border-primary/20 sm:hidden"
       >
-        <div className="px-2 fold-closed:px-1 py-2">
-          <div className="flex items-center justify-between">
-            {/* Mobile Logo */}
-            <motion.button
-              onClick={() => scrollToSection('hero')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-sm fold-closed:text-xs font-bold font-mono text-primary"
-            >
-              <span className="text-matrix-green">$</span> <span className="fold-closed:hidden">aymen.dev</span><span className="hidden fold-closed:inline">a</span>
-            </motion.button>
+        <div className="px-2 fold-closed:px-1 py-2 flex items-center justify-between">
+          <motion.button
+            onClick={() => scrollToSection('hero')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-sm fold-closed:text-xs font-bold font-mono text-primary"
+          >
+            <span className="text-matrix-green">$</span> kaoutar.dev
+          </motion.button>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 fold-closed:p-1 text-primary hover:text-accent transition-colors z-50 relative"
+          <motion.button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 fold-closed:p-1 text-primary hover:text-accent transition-colors z-50 relative"
+          >
+            <motion.div
+              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-lg fold-closed:text-base block"
             >
-              <motion.div
-                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="text-lg fold-closed:text-base block"
-              >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </motion.div>
-            </motion.button>
-          </div>
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </motion.div>
+          </motion.button>
         </div>
       </motion.nav>
 
@@ -166,7 +144,6 @@ export default function Navigation() {
         className="fixed top-0 left-0 h-full w-64 sm:w-72 bg-dark-surface/98 backdrop-blur-md border-r border-primary/20 z-30 sm:hidden"
       >
         <div className="pt-16 p-4">
-          {/* Terminal Header */}
           <div className="mb-6 p-4 bg-dark-card border border-primary/30 rounded-lg">
             <div className="flex items-center mb-3">
               <div className="flex space-x-2">
@@ -183,21 +160,14 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Navigation Items */}
           <div className="space-y-2">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : -20
-                }}
+                animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                onClick={() => {
-                  scrollToSection(item.id);
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => { scrollToSection(item.id); setIsMobileMenuOpen(false); }}
                 whileHover={{ x: 10, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`w-full text-left px-4 py-3 rounded-lg font-mono text-sm transition-all duration-300 flex items-center space-x-3 ${
@@ -208,20 +178,11 @@ export default function Navigation() {
               >
                 <span className="text-lg"><item.icon className="w-5 h-5" /></span>
                 <span>{item.label}</span>
-                {activeSection === item.id && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="ml-auto text-dark-bg font-bold"
-                  >
-                    →
-                  </motion.span>
-                )}
+                {activeSection === item.id && <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="ml-auto text-dark-bg font-bold">→</motion.span>}
               </motion.button>
             ))}
           </div>
 
-          {/* Terminal Footer */}
           <div className="mt-6 p-4 bg-dark-card border border-accent/30 rounded-lg">
             <div className="text-matrix-green font-mono text-xs">
               <span className="text-accent">];</span>
@@ -233,7 +194,7 @@ export default function Navigation() {
         </div>
       </motion.div>
 
-      {/* Overlay */}
+      {/* Mobile Overlay */}
       {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0 }}

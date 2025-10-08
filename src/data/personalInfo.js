@@ -1,35 +1,34 @@
 export const personalInfo = {
-  name: "Aymen Chabbaki",
-  title: "Full Stack Developer & Future AI Engineer",
-  tagline: "Building intelligent, scalable, and beautiful digital experiences.",
-  bio: "Passionate Full Stack Developer with expertise in modern web technologies and AI. Currently pursuing a Licence d'Excellence in Artificial Intelligence at Hassan II University. I specialize in creating innovative solutions using MERN stack, Python, and machine learning technologies.",
-  location: "Sidi moumen, Casablanca",
-  email: "aymanchabbaki09@gmail.com",
-  phone: "+212 703285402",
-  website: "www.devhermanos.me",
-  image: "profile.jpeg", // placeholder
+  name: "Kaoutar Motassim",
+  title: "Full Stack Developer",
+  tagline: "Add a tagline",
+  bio: "Passionate Full Stack Developer with a background in Data Science.",
+  location: "Casablanca, Morocco",
+  email: "mtskaoutar@gmail.com",
+  phone: "+212 645 605 438",
+  website: "www.devhermanos.me", // tu peux remplacer par ton site si tu en as un
+  image: "me.jpg", // nom de ton image
   funFacts: [
-    "🧠 AI enthusiast who loves exploring deep learning",
-    "🚀 Built 5+ full-stack applications in the last year",
-    "🏆 Top performer in BTS Development Informatique",
-    "🌍 Fluent in French, English, and Arabic"
+    "🧠 Passionate about AI and Data Science",
+    "🚀 Building full-stack web applications",
+    "🌍 Fluent in French, English, Spanish, and Arabic"
   ]
 };
 
 export const socialLinks = [
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ayman-chabbaki-b4093829b/",
+    url: "https://www.linkedin.com/in/kaoutar-motassim-043092316/", // ajoute ton lien LinkedIn
     icon: "FaLinkedin"
   },
   {
     name: "GitHub", 
-    url: "https://github.com/AymanChabbaki",
+    url: "https://github.com/Kaoutar-Motassim", // ajoute ton lien GitHub
     icon: "FaGithub"
   },
   {
     name: "Email",
-    url: "mailto:aymanchabbaki09@gmail.com",
+    url: "mailto:mtskaoutar@gmail.com",
     icon: "FaEnvelope"
   }
 ];

@@ -109,7 +109,7 @@ function App() {
                 transition={{ duration: 0.5, delay: 1.1 }}
                 className="text-matrix-green ml-4"
               >
-                name: <span className="text-secondary">"Aymen Chabbaki"</span>,
+                name: <span className="text-secondary">"Kaoutar Motassim"</span>,
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -117,7 +117,7 @@ function App() {
                 transition={{ duration: 0.5, delay: 1.2 }}
                 className="text-matrix-green ml-4"
               >
-                role: <span className="text-secondary">"Full Stack Developer & AI Engineer"</span>,
+                role: <span className="text-secondary">"Full Stack Developer & AI Enthusiast"</span>,
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -125,7 +125,7 @@ function App() {
                 transition={{ duration: 0.5, delay: 1.3 }}
                 className="text-matrix-green ml-4"
               >
-                skills: <span className="text-accent">[</span><span className="text-secondary">"React", "Node.js", "Python", "AI/ML"</span><span className="text-accent">]</span>,
+                skills: <span className="text-accent">[</span><span className="text-secondary">"Python", "C", "C++", "SQL", "JavaScript", "React", "Express.js"</span><span className="text-accent">]</span>,
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -153,7 +153,7 @@ function App() {
             transition={{ duration: 0.8, delay: 1.6 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
           >
-            Aymen Chabbaki
+            Kaoutar Motassim
           </motion.h1>
 
           <motion.div 
@@ -163,7 +163,7 @@ function App() {
             className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-matrix-green"
           >
             <span className="border-r-2 border-primary animate-pulse">
-              Full Stack Developer & AI Engineer
+              Full Stack Developer & AI Enthusiast
             </span>
           </motion.div>
           
@@ -173,7 +173,7 @@ function App() {
             transition={{ duration: 0.8, delay: 1.8 }}
             className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-2xl mx-auto text-gray-300 leading-relaxed"
           >
-            <span className="text-primary">//</span> Crafting intelligent solutions with cutting-edge technology
+            <span className="text-primary">//</span> Crafting innovative solutions and exploring AI technologies
           </motion.p>
           
           {/* Action buttons */}

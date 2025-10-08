@@ -4,10 +4,9 @@ import { Download, FileText, Code, User, Briefcase } from 'lucide-react';
 export default function Resume() {
   const handleDownload = () => {
     // Create a download link for the resume
-    // You'll need to add your actual resume file to the public folder
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Add your resume file to public folder
-    link.download = 'Aymen_Chabbaki_Resume.pdf';
+    link.href = '/resume.pdf'; // Place your resume PDF in the public folder
+    link.download = 'Kaoutar_Motassim_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -17,17 +16,17 @@ export default function Resume() {
     {
       icon: <Code className="w-6 h-6" />,
       title: "Technical Skills",
-      description: "Full-stack development with modern frameworks and AI/ML expertise"
+      description: "Python, C, C++, SQL, JavaScript, HTML, CSS, Flask, React, AI & Machine Learning, Web Development"
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       title: "Experience",
-      description: "Professional development experience with diverse project portfolio"
+      description: "Active in university tech clubs, leading projects and workshops on AI, web development, and software solutions"
     },
     {
       icon: <User className="w-6 h-6" />,
       title: "Education",
-      description: "Strong academic background in computer science and technology"
+      description: "Bachelor’s degree in Computer Science (in progress), focusing on programming, algorithms, and data structures"
     }
   ];
 

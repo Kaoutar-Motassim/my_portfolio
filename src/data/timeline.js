@@ -2,92 +2,115 @@ export const timeline = [
   {
     id: 1,
     type: "education",
-    title: "Licence d'Excellence en Intelligence Artificielle",
-    institution: "Hassan II University",
-    location: "Casablanca",
-    period: "2024 - 2025",
-    description: "Advanced studies in Artificial Intelligence, Machine Learning, and Deep Learning technologies.",
+    title: "Computer Science",
+    institution: "Faculty of Science Ben M'sik - UH2C",
+    location: "Casablanca, Morocco",
+    period: "Sep 2023 – Jun 2026",
+    description: "Gained solid foundations in statistics, probability, HTML, CSS, JavaScript, React, C, C++, Assembly, Linear Algebra, Python, MySQL, OS, and Shell Programming.",
     icon: "FaGraduationCap"
   },
   {
     id: 2,
-    type: "education", 
-    title: "BTS en Développement Informatique",
-    institution: "Lycée Technique Settat",
-    location: "Settat",
-    period: "2022 - 2024",
-    description: "Technical degree in Software Development with focus on web technologies and programming fundamentals.",
-    icon: "FaGraduationCap"
+    type: "experience",
+    title: "HR",
+    institution: "AI & Dev Community",
+    location: "Casablanca, Morocco",
+    period: "Sep 2024 – Jul 2025",
+    description: "Organized multiple activities and events with the club. Worked on engaging and managing community members.",
+    icon: "FaBriefcase"
   },
   {
     id: 3,
     type: "experience",
-    title: "Stagiaire IT Support",
-    institution: "Ratp Dev Casablanca",
-    location: "Casablanca",
-    period: "04/2024 - 06/2024",
-    description: "Developed recruitment management platform, provided IT support, and contributed to technical strategy.",
+    title: "Vice President",
+    institution: "AI & Dev Community",
+    location: "Casablanca, Morocco",
+    period: "Jul 2025 – Present",
+    description: "Leading the club’s new chapter on AI & Data Science. Helping people learn AI and Data Science from scratch.",
     icon: "FaBriefcase"
-  },
-  {
-    id: 4,
-    type: "education",
-    title: "Bac en Science de la Vie et de la Terre",
-    institution: "Lycée Aziz Bilal",
-    location: "Morocco",
-    period: "2022",
-    description: "High school diploma with specialization in Life and Earth Sciences.",
-    icon: "FaGraduationCap"
   }
 ];
 
 export const achievements = [
   {
     id: 1,
-    title: "Node.js Certification",
-    issuer: "Codecademy",
-    year: "2024",
-    icon: "SiNodedotjs",
-    type: "certification"
+    title: "Introduction to Frontend Development",
+    issuer: "Meta",
+    year: "Feb 13, 2025",
+    description: "Learned HTML, CSS, JavaScript, responsive design and Bootstrap to build interactive and modern web pages.",
+    icon: "SiHtml5",
+    type: "certification",
+    image: "certif1_page-0001.jpg" // lien de l'image
   },
   {
     id: 2,
-    title: "TypeScript Certification", 
-    issuer: "Codecademy",
-    year: "2024",
-    icon: "SiTypescript",
-    type: "certification"
+    title: "Programming with JavaScript",
+    issuer: "Meta",
+    year: "Mar 2, 2025",
+    description: "Covered JS fundamentals, DOM manipulation, modules, JSON, Node.js, and npm to build dynamic web applications.",
+    icon: "SiJavascript",
+    type: "certification",
+    image: "certif2.jpg"
   },
   {
     id: 3,
-    title: "JavaScript Certification",
-    issuer: "Ark-x",
-    year: "2024",
-    icon: "SiJavascript",
-    type: "certification"
+    title: "HTML & CSS In-Depth",
+    issuer: "Meta",
+    year: "Mar 17, 2025",
+    description: "Mastered advanced HTML and CSS techniques to create responsive, accessible, and visually appealing web pages.",
+    icon: "SiHtml5",
+    type: "certification",
+    image: "certif3.jpg"
   },
   {
     id: 4,
-    title: "Git & GitHub Advanced",
-    issuer: "Ark-x",
-    year: "2024",
+    title: "Version Control",
+    issuer: "Meta",
+    year: "Mar 6, 2025",
+    description: "Learned to use Git, GitHub, forking, and repository management to collaborate effectively on software projects.",
     icon: "SiGit",
-    type: "certification"
+    type: "certification",
+    image: "certif4.jpg"
   },
   {
     id: 5,
-    title: "Huawei ICT - Intelligence Artificielle",
-    issuer: "Huawei",
-    year: "2024",
-    icon: "SiHuawei",
-    type: "certification"
+    title: "React Basics",
+    issuer: "Meta",
+    year: "Mar 25, 2025",
+    description: "Learned to build interactive user interfaces using React, including components, props, state, and JSX.",
+    icon: "SiReact",
+    type: "certification",
+    image: "certif5.jpg"
   },
   {
     id: 6,
-    title: "Excellence in AI Studies",
-    issuer: "Hassan II University",
-    year: "2024",
+    title: "Advanced React",
+    issuer: "Meta",
+    year: "Mar 29, 2025",
+    description: "Mastered advanced concepts like hooks, context API, state management, and building scalable, dynamic web applications.",
+    icon: "SiReact",
+    type: "certification",
+    image: "certif6.jpg"
+  },
+  {
+    id: 7,
+    title: "Data Science and Artificial Intelligence Bootcamp",
+    issuer: "Orange Digital Center",
+    year: "Jun 2 – Jul 29, 2025",
+    description: "Learned data analysis, visualization, machine learning fundamentals, and AI concepts to solve real-world problems.",
+    icon: "SiPython",
+    type: "certification",
+    image: "certif10.jpg"
+  },
+  {
+    id: 8,
+    title: "Innovation Skills Competition 2025",
+    issuer: "UH2C",
+    year: "Apr 22 – Apr 23, 2025",
+    description: "Designed and implemented an AI-powered solution leveraging deep learning and computer vision to detect cast characters on aluminum wheel hubs, improving inspection efficiency and accuracy.",
     icon: "FaTrophy",
-    type: "award"
+    type: "award",
+    image: "certif11.jpg"
   }
 ];
+

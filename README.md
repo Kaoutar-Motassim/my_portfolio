@@ -45,7 +45,7 @@ A modern, responsive, and blazing-fast portfolio website built with React.js, Ta
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd aymen_portfolio
+cd kaoutar_portfolio
 ```
 
 2. Install dependencies:
