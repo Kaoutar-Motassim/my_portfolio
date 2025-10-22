@@ -89,7 +89,7 @@ function App() {
                   transition={{ delay: 0.8 }}
                   className="text-sm text-gray-400 font-mono"
                 >
-                  aymen@portfolio:~$
+                  kaoutar@portfolio:~$
                 </motion.span>
               </div>
             </div>

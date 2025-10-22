@@ -1,4 +1,4 @@
-# Aymen Chabbaki - Portfolio Website
+# Kaoutar Motassim - Portfolio Website
 
 A modern, responsive, and blazing-fast portfolio website built with React.js, Tailwind CSS, and Framer Motion.
 
